@@ -1,0 +1,37 @@
+{
+  "name": "yet-another-chat",
+  "version": "0.0.0",
+  "description": "Chat application with Vue, Express and Centrifugo",
+  "engines": {
+    "node": "17.x"
+  },
+  "scripts": {
+    "start": "concurrently \"npm run server-start\" \"npm run centrifugo-start\"",
+
+    "server-dev": "cd express-server && npm run dev",
+    "server-build": "cd express-server && npm run build",
+    "server-start": "cd express-server && npm run start",
+
+    "client-dev": "cd vue-client && npm run dev",
+    "client-build": "cd vue-client && npm run build",
+    "client-start": "cd express-server && npm run preview",
+
+    "centrifugo-start": "cd centrifugo && centrifugo --config=config.json --admin",
+
+    "heroku-build-client": "cd vue-client && npm install && npm run build",
+    "heroku-build-server": "cd express-server && npm install && npm run build",
+    "heroku-postbuild": "npm run heroku-build-client & npm run heroku-build-server",
+
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zandalol/yet-another-chat"
+  },
+  "keywords": [],
+  "author": "Zandalol",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^7.3.0"
+  }
+}
